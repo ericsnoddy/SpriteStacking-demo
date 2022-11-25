@@ -1,11 +1,8 @@
 # std lib
 import sys
 
-# reqs
-import pygame as pg
-
 # local
-from settings import *
+from settings import *  # includes pygame as pg
 from stacked_sprite import StackedSprite
 
 class App:
