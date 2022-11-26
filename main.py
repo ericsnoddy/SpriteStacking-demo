@@ -4,6 +4,7 @@ import sys
 # local
 from settings import *  # includes pygame as pg
 from stacked_sprite import StackedSprite
+from cache import Cache
 
 class App:
     def __init__(self):
@@ -13,6 +14,8 @@ class App:
         self.dt = 0.01  # delta time
         # groups
         self.main_group = pg.sprite.Group()
+        # load cached game objects
+        self.cache = Cache()
 
         # test
         StackedSprite(self, 'van', pos=(-150, -150))
