@@ -9,6 +9,11 @@ STACKED_SPRITE_ATTRS = {
     'van': {
         'path': 'assets/stacked_sprites/van.png',
         'num_layers': 20,
-        'scale': 18,
+        'scale': 6,
+    },
+    'tank': {
+        'path': 'assets/stacked_sprites/tank.png',
+        'num_layers': 17,
+        'scale': 10,
     }
 }

@@ -14,24 +14,34 @@ class StackedSprite(pg.sprite.Sprite):
 
         self.attrs = STACKED_SPRITE_ATTRS[self.name]
         self.layer_array = self.get_layer_array()
+        self.angle = 0
 
 
     def update(self):
+        self.get_angle()
         self.get_image()
+
+
+    def get_angle(self):
+        self.angle = -math.degrees(self.app.time)
 
 
     def get_image(self):
         # create transparent surf with height increased by number of layers * scaling
         # allows room for the y-shift for sprite stacking effect
-        surf = pg.Surface(self.layer_array[0].get_size())
+        surf = pg.Surface(self.layer_array[0].get_size())        
+        surf = pg.transform.rotate(surf, self.angle)  # first rotate surface by the view angle
         sprite_surf = pg.Surface([surf.get_width(), 
                                     surf.get_height() + self.attrs['num_layers'] * self.attrs['scale']], pg.SRCALPHA)
 
         # blit the layer slices on the surface stacked with set scaling
         for i, layer in enumerate(self.layer_array):
+            # rotate layer by the view angle
+            layer = pg.transform.rotate(layer, self.angle)
             sprite_surf.blit(layer, (0, i * self.attrs['scale']))
 
-        self.image = sprite_surf
+        # flip image b/c pygame uses downward-positive y-axis - mirror x-axis to keep CW the positive rotation direction
+        self.image = pg.transform.flip(sprite_surf, True, True)
         # CENTER offset keeps (0,0) center of screen
         self.rect = self.image.get_rect(center = self.pos + CENTER)
         

@@ -15,7 +15,8 @@ class App:
         self.main_group = pg.sprite.Group()
 
         # test
-        StackedSprite(self, 'van', pos=(0, 0))
+        StackedSprite(self, 'van', pos=(-150, -150))
+        StackedSprite(self, 'tank', pos=(250, 100))
 
 
     def update(self):
