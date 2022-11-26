@@ -1,6 +1,6 @@
 # local
 from settings import *
-
+import time
 # build a dictionary of cached sprite layers at every viewing angle to improve performance
 class Cache:
     def __init__(self):

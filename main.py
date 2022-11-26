@@ -5,6 +5,7 @@ import sys
 from settings import *  # includes pygame as pg
 from stacked_sprite import StackedSprite
 from cache import Cache
+from player import Player
 
 class App:
     def __init__(self):
@@ -16,6 +17,8 @@ class App:
         self.main_group = pg.sprite.Group()
         # load cached game objects
         self.cache = Cache()
+        # load Player
+        self.player = Player(self)
 
         # test
         StackedSprite(self, 'van', pos=(-150, -150))
