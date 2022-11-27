@@ -21,7 +21,7 @@ ENTITY_SPRITE_ATTRS = {
         'path': 'assets/entities/player/player.png',
         'mask_path': 'assets/entities/player/mask.png',
         'num_layers': 7,
-        'scale': 0.35,
+        'scale': 0.25,
         'y_offset': 0,
     },
     'kitty': {
