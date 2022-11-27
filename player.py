@@ -1,5 +1,5 @@
 # std lib
-from math import sqrt
+from math import sqrt, pi
 
 # reqs
 from pygame.constants import *
@@ -12,6 +12,8 @@ class Player(pg.sprite.Sprite):
         self.app = app
         self.group = app.main_group
         super().__init__(self.group)
+        # init Player layer = CENTER.y b/c Player doesn't have screen_pos.y attr so won't be updated
+        self.group.change_layer(self, CENTER.y)  
 
         size = vec2([50, 50])
         self.image = pg.Surface(size, pg.SRCALPHA)
@@ -20,7 +22,7 @@ class Player(pg.sprite.Sprite):
 
         self.offset = vec2(0)
         self.incr = vec2(0)
-        self.angle = 0
+        self.angle = 0  # radians
 
 
     def update(self):
