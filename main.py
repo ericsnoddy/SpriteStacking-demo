@@ -14,6 +14,10 @@ class App:
         self.clock = pg.time.Clock()
         self.time = 0
         self.dt = 0.01  # delta time
+        # custom event for triggering next frame of animations
+        self.anim_trigger = False
+        self.anim_event = pg.USEREVENT + 0
+        pg.time.set_timer(self.anim_event, ANIM_SPEED)
         # groups - Using LayeredUpdates has a peculiarity that allows for simple y-sorting
         # Each sprite has a private layer attr self._layer that just determines draw order
         # See change_layer() in the StackedSprite class
@@ -42,11 +46,14 @@ class App:
 
 
     def check_events(self):
+        self.anim_trigger = False
         for e in pg.event.get():
             if e.type == pg.QUIT or (e.type == pg.KEYDOWN and e.key == pg.K_ESCAPE):
                 pg.quit()
                 sys.exit()
-
+            # animation next frame trigger 
+            elif e.type == self.anim_event:
+                self.anim_trigger = True
 
     def run(self):
         while True:

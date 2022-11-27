@@ -6,18 +6,13 @@ from pygame.constants import *
 
 # local
 from settings import *
+from entity import BaseEntity
 
-class Player(pg.sprite.Sprite):
-    def __init__(self, app):
-        self.app = app
-        self.group = app.main_group
-        super().__init__(self.group)
+class Player(BaseEntity):
+    def __init__(self, app, name='player'):
+        super().__init__(app, name)
         # init Player layer = CENTER.y b/c Player doesn't have screen_pos.y attr so won't be updated
         self.group.change_layer(self, CENTER.y)  
-
-        size = vec2([50, 50])
-        self.image = pg.Surface(size, pg.SRCALPHA)
-        pg.draw.circle(self.image, 'red', size / 2, size[0] / 2)
         self.rect = self.image.get_rect(center=CENTER)
 
         self.offset = vec2(0)
@@ -26,6 +21,7 @@ class Player(pg.sprite.Sprite):
 
 
     def update(self):
+        super().update()  # run update from inherited class (animate)
         self.control()
         self.move()
 

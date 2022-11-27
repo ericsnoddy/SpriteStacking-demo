@@ -6,9 +6,11 @@ from settings import *
 class Cache:
     def __init__(self):
         self.stacked_sprite_cache = {}
+        self.entity_sprite_cache = {}
         self.viewing_angle = 360 // NUM_ANGLES
         self.outline_thickness = OUTLINE_THICKNESS
         self.get_stacked_sprite_cache()
+        self.get_entity_sprite_cache()
 
 
     def get_stacked_sprite_cache(self):
@@ -22,6 +24,15 @@ class Cache:
             layer_array = self.get_layer_array(attrs)
             self.run_prerender(obj_name, layer_array, attrs)
 
+
+    def get_entity_sprite_cache(self):
+        for sprite_name in ENTITY_SPRITE_ATTRS:
+            self.entity_sprite_cache[sprite_name] = {
+                'images': None
+            }
+            attrs = ENTITY_SPRITE_ATTRS[sprite_name]
+            images = self.get_layer_array(attrs)
+            self.entity_sprite_cache[sprite_name]['images'] = images
 
     def run_prerender(self, obj_name, layer_array, attrs):
 

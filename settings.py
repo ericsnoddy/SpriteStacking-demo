@@ -13,6 +13,36 @@ NUM_ANGLES = 90  # must evenly divide 360; higher num = smoother rotation = long
 BG_COLOR = 'olivedrab'
 BORDER_COLOR = 'black'
 OUTLINE_THICKNESS = 4
+ANIM_SPEED = 100  # ms per frame
+
+# entity settings
+ENTITY_SPRITE_ATTRS = {
+    'player': {
+        'path': 'assets/entities/player/player.png',
+        'mask_path': 'assets/entities/player/mask.png',
+        'num_layers': 7,
+        'scale': 0.35,
+        'y_offset': 0,
+    },
+    'kitty': {
+        'path': 'assets/entities/cats/kitty.png',
+        'num_layers': 8,
+        'scale': 0.8,
+        'y_offset': -20,
+    },
+    'explosion': {
+        'num_layers': 7,
+        'scale': 1.0,
+        'path': 'assets/entities/explosion/explosion.png',
+        'y_offset': 50,
+    },
+    'bullet': {
+        'num_layers': 1,
+        'scale': 0.4,
+        'path': 'assets/entities/bullet/bullet.png',
+        'y_offset': 50,
+    },
+}
 
 STACKED_SPRITE_ATTRS = {
     'blue_tree': {
