@@ -22,6 +22,7 @@ class App:
         # Each sprite has a private layer attr self._layer that just determines draw order
         # See change_layer() in the StackedSprite class
         self.main_group = pg.sprite.LayeredUpdates()
+        self.transparent_objects = []
         # load prerendered game objects
         self.cache = Cache()
         # player and world
@@ -30,6 +31,7 @@ class App:
 
 
     def update(self):
+        self.scene.update()
         self.main_group.update()
         pg.display.set_caption(f'{self.clock.get_fps(): .1f}')
         self.dt = self.clock.tick()
@@ -51,9 +53,10 @@ class App:
             if e.type == pg.QUIT or (e.type == pg.KEYDOWN and e.key == pg.K_ESCAPE):
                 pg.quit()
                 sys.exit()
-            # animation next frame trigger 
+            # catch custom timer event to trigger next animation frame 
             elif e.type == self.anim_event:
                 self.anim_trigger = True
+
 
     def run(self):
         while True:

@@ -13,7 +13,8 @@ NUM_ANGLES = 90  # must evenly divide 360; higher num = smoother rotation = long
 BG_COLOR = 'olivedrab'
 BORDER_COLOR = 'black'
 OUTLINE_THICKNESS = 4
-ANIM_SPEED = 100  # ms per frame
+TRANSPARENCY = 70
+ANIM_SPEED = 150  # ms per frame
 
 # entity settings
 ENTITY_SPRITE_ATTRS = {
@@ -27,7 +28,7 @@ ENTITY_SPRITE_ATTRS = {
     'kitty': {
         'path': 'assets/entities/cats/kitty.png',
         'num_layers': 8,
-        'scale': 0.8,
+        'scale': 0.5,
         'y_offset': -20,
     },
     'explosion': {
@@ -57,6 +58,18 @@ STACKED_SPRITE_ATTRS = {
         'scale': 10,
         'y_offset': 10,
     },
+    'crate': {
+        'path': 'assets/stacked_sprites/crate.png',
+        'num_layers': 16,
+        'scale': 5,
+        'y_offset': 10,
+    },
+    'cup': {
+        'path': 'assets/stacked_sprites/cup.png',
+        'num_layers': 13,
+        'scale': 8,
+        'y_offset': 10,
+    },
     'grass': {
         'path': 'assets/stacked_sprites/grass.png',
         'num_layers': 11,
@@ -64,16 +77,31 @@ STACKED_SPRITE_ATTRS = {
         'y_offset': 20,
         'outline': False,
     },
-    'van': {
-        'path': 'assets/stacked_sprites/van.png',
-        'num_layers': 20,
-        'scale': 6,
-        'y_offset': 10,
+    'pancake': {
+        'path': 'assets/stacked_sprites/pancake.png',
+        'num_layers': 11,
+        'scale': 7,
+        'y_offset': 0,
+        'mask_layer': 4,
+    },
+    'sphere': {
+        'path': 'assets/stacked_sprites/sphere.png',
+        'num_layers': 13,
+        'scale': 10,
+        'y_offset': 0,
+        'mask_layer': 4,
     },
     'tank': {
         'path': 'assets/stacked_sprites/tank.png',
         'num_layers': 17,
         'scale': 8,
         'y_offset': 0,
-    }
+    },
+    'van': {
+        'path': 'assets/stacked_sprites/van.png',
+        'num_layers': 20,
+        'scale': 6,
+        'y_offset': 10,
+    },
+    
 }

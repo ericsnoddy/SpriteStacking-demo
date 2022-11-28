@@ -69,9 +69,37 @@ class StackedSprite(pg.sprite.Sprite):
     def get_image(self):
         # get corresponding cached image (surface with properly blitted sprites)
         self.image = self.rotated_sprites[self.angle_key]
-        # CENTER offset keeps (0,0) center of screen - player offset moves world around the player
         self.rect = self.image.get_rect(center = self.screen_pos + self.y_off)
         
 
     
+class StackedSpriteAlpha(StackedSprite):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.app.transparent_objects.append(self)
+        self.dist_to_player = 0.0
+        self.alpha_trigger = False
+    
+    def get_dist_to_player(self):
+        self.dist_to_player = self.screen_pos.distance_to(self.player.rect.center)
+
+
+    def get_alpha_image(self):
+        if self.alpha_trigger:
+            if self.rect.centery > self.player.rect.top:
+                if self.rect.contains(self.player.rect):
+                    self.image = self.image.copy()
+                    self.image.set_alpha(TRANSPARENCY)
+
+    
+    def update(self):
+        super().update()
+        self.get_dist_to_player()
+
+
+    def get_image(self):
+        super().get_image()
+        self.get_alpha_image()
+        
+
 
