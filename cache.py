@@ -14,7 +14,7 @@ class Cache:
         self.outline_thickness = OUTLINE_THICKNESS
         start = time.time()
         self.get_stacked_sprite_cache()
-        print(f'prerender time: {time.time() - start}')
+        # print(f'prerender time: {time.time() - start}')
         self.get_entity_sprite_cache()
 
 
